@@ -1,17 +1,18 @@
 "use strict";
-class DataStorage {
-    constructor(name) {
+var DataStorage = /** @class */ (function () {
+    function DataStorage(name) {
         this.name = name;
     }
-    set(ob) {
-        const convertedObject = btoa(JSON.stringify(ob));
+    DataStorage.prototype.set = function (ob) {
+        var convertedObject = btoa(JSON.stringify(ob));
         localStorage.setItem(this.name, convertedObject);
-    }
-    get() {
-        const stringOb = localStorage.getItem(this.name);
+    };
+    DataStorage.prototype.get = function () {
+        var stringOb = localStorage.getItem(this.name);
         if (stringOb)
             return JSON.parse(atob(stringOb));
         else
             return null;
-    }
-}
+    };
+    return DataStorage;
+}());

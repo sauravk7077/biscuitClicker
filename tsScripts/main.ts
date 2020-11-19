@@ -1,18 +1,12 @@
 // Required constants and variable
 const dataStorage = new DataStorage("props");
-let props = {
-    biscuitCount: 0,
-    biscuitValues: [1,5]
-}
-
 
 // All required DOM elements
 const biscuitBtn = document.getElementById('biscuit');
 const biscuitCountDiv = document.getElementById('biscuitCount');
 
 //Event Listeners
-biscuitBtn?.addEventListener('click', display);
-
+biscuitBtn?.addEventListener('click', biscuitClick);
 
 
 //Functions
@@ -20,20 +14,25 @@ function init() {
     if(dataStorage.get()){
         props = dataStorage.get();
     }else {
-        console.log("Entered");
         dataStorage.set(props);
     }
+    setInterval(()=> {
+        for(let x of props.biscuitValues) {
+            props.biscuitCount += x.value * x.count;
+        }
+        display();
+    },1);
+}
+
+
+function biscuitClick() {
+    props.biscuitCount += props.clickValue;
     display();
 }
 
-function update() {
-    dataStorage.set(props);
-}
-
 function display() {
-    update();
-    props.biscuitCount += props.biscuitValues[0];
     biscuitCountDiv.innerText = props.biscuitCount.toString();
+    dataStorage.set(props);
 }
 
 
