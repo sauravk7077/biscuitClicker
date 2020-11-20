@@ -5,3 +5,30 @@
     background-color: brown;
     cursor: pointer;
 }
+
+.shopContent, .shopBtn{
+    display: flex;
+    align-items: center;
+    
+}
+
+.shopContent {
+    width: 150px;
+    justify-content: space-around;
+}
+
+.shopBtn{
+    justify-content: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.shopBtn > * {
+    margin: 5px;
+}
+
+.icon{
+    width: 50px;
+    height: 50px;
+    background: burlywood;
+}
