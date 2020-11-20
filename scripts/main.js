@@ -14,13 +14,14 @@ function init() {
     else {
         dataStorage.set(props);
     }
+    generateShops();
     setInterval(function () {
         for (var _i = 0, _a = props.biscuitValues; _i < _a.length; _i++) {
             var x = _a[_i];
             props.biscuitCount += x.value * x.count;
         }
         display();
-    }, 100);
+    }, 1000);
 }
 function biscuitClick() {
     props.biscuitCount += props.clickValue;
@@ -30,11 +31,11 @@ function display() {
     biscuitCountDiv.innerText = props.biscuitCount.toString();
     var shopContainer = document.getElementById('shopsContainer');
     if (shopContainer) {
-        var shopBtn = shopContainer.children[0];
-        for (var _i = 0, _a = props.biscuitValues; _i < _a.length; _i++) {
-            var x = _a[_i];
-            shopBtn.children[1].children[0].children[0].innerText = x.cost;
-            shopBtn.children[1].children[1].children[0].innerText = x.count;
+        var i = 0;
+        for (var i_1 = 0; i_1 < props.biscuitValues.length; i_1++) {
+            var shopBtn = shopContainer.children[i_1];
+            shopBtn.children[1].children[0].children[0].innerText = props.biscuitValues[i_1].cost;
+            shopBtn.children[1].children[1].children[0].innerText = props.biscuitValues[i_1].count.toString();
         }
     }
     dataStorage.set(props);
