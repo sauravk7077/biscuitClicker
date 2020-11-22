@@ -6,6 +6,11 @@
     cursor: pointer;
 }
 
+#shopsContainer{
+    width: 200px;
+    margin-left: auto;
+}
+
 .shopContent, .shopBtn{
     display: flex;
     align-items: center;
