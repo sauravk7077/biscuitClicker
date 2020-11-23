@@ -47,6 +47,12 @@ function display() {
         let i = 0;
         for(let i = 0;i< props.biscuitValues.length;i++){
             const shopBtn = shopContainer.children[i];
+            
+            if(props.biscuitValues[i].cost > props.biscuitCount && !shopBtn.children[0].className.endsWith('disabled'))
+                shopBtn.children[0].className += " disabled";
+            else if(props.biscuitValues[i].cost <= props.biscuitCount)
+                shopBtn.children[0].className = shopBtn.children[0].className.replace(' disabled', '');
+
             const cost = shopBtn.children[1].children[0].children[0];
             const amount = shopBtn.children[1].children[1].children[0];
             cost.innerText = props.biscuitValues[i].cost;
@@ -80,23 +86,27 @@ function handleShopClick(e, id) {
 function generateShops() {
     const htmlCode = `
     <div class="shopBtn">
-        <div class="icon"></div>
+        <div class="icon"><img></i></div>
         <div></div>
     </div>
-    <div>
+    <div class="details">
         <div>Cost: <span></span></div>
         <div>Total: <span></span></div>
+        <div></div>
     </div>
 `;
     const containerDiv = document.createElement("div");
     containerDiv.id = "shopsContainer";
-    for(let x of props.biscuitValues){
+    for(let i = 0; i < props.biscuitValues.length;i++){
+        const x = props.biscuitValues[i];
         const shopBtn = document.createElement("div");
         shopBtn.className = "shopContent";
         shopBtn.id =  formatName(x.name);
         shopBtn.innerHTML = htmlCode;
+        shopBtn.children[0].children[0].children[0].src = `../images/${i}.svg`;
         shopBtn.children[0].children[1].innerText = x.name;
         shopBtn.children[0].addEventListener('click', e => {handleShopClick(e, shopBtn.id)});
+        shopBtn.children[1].children[2].innerText = x.desc;
         shopBtn.children[1].children[0].children[0].innerText = x.cost;
         shopBtn.children[1].children[1].children[0].innerText = x.count;
         containerDiv.appendChild(shopBtn);
