@@ -9,7 +9,6 @@
       {"name":"Shipment","value":20,"count":0,"cost":7000, "desc": "Brings in fresh biscuits from the biscuit planet."},
       {"name":"Alchemy Labs","value":1000,"count":0,"cost":50000, "desc": "Turns gold into biscuits!"},
       {"name":"Portal","value":1000,"count":0,"cost":100000, "desc": "Opens a door to the Biscuitverse."},
-      {"name":"Time Machine","value":1000,"count":0,"cost":123456789, "desc": "Brings biscuits from the past, before they were even eaten."},
-      {"name":"Elder Pledge","value":1000,"count":0,"cost":10000000, "desc": "Puts an end to the Ancients' wrath, at least for a while."}
+      {"name":"Time Machine","value":1000,"count":0,"cost":123456789, "desc": "Brings biscuits from the past, before they were even eaten."}
     ]
 }

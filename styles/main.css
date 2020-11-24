@@ -1,18 +1,50 @@
+body{
+    font-family: 'Raleway', sans-serif;
+    --color1: #F1A46C;
+    --color2: #6DE7F2;
+    --color2: 6DE7F2;
+    background-color: var(grey);
+}
+
+h1{
+    font-family: 'Libre Baskerville', serif;
+    text-align: center;
+}
+
+.centeredBiscuit
+{
+    display: flex;
+    justify-content: center;
+}
+
 #biscuit {
     display: block;
     width: 200px;
     height: 200px;
-    background-color: brown;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    filter: drop-shadow(0px 0px 6px white);
+}
+
+#biscuit:active, .shopBtn:active{
+    transform: scale(0.8);
 }
 
 #shopsContainer{
     flex-wrap: wrap;
 }
 
-#biscuitCount{
+.biscuitCountBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 2em;
+    font-size: 1.2em;
 }
+.biscuitCountBox img{
+    height: 1.2em;
+}
+
 
 .shopContent, .shopBtn, #shopsContainer{
     display: flex;
@@ -34,8 +66,16 @@
     cursor: pointer;
     flex-basis: 100px;
     flex-shrink: 0;
-    background-color: rgb(223, 223, 223);
+    background-color: var(--color2);
+    padding: 5px;
+    border-radius: 10px;
     text-align: center;
+    color: #cecece;
+}
+
+.shopBtn {
+    font-size: 1.1em;
+    transition: transform 0.2s ease-in-out;
 }
 
 .shopBtn > * {
@@ -47,13 +87,17 @@
     justify-content: center;
 }
 
+.disc{
+    font-weight: bold;
+}
+
 .details:nth-child(2) {
     max-width: 200px;
 }
 
-.shopBtn.disabled{
+.disabled{
     opacity: 0.7;
-    color: grey;
+    color: var(--grey);
 }
 
 .icon{
@@ -64,7 +108,7 @@
     align-items: center;
     justify-content: center;
 }
-.icon img{
-    width: 100%;
-    height: 100%;
+img{
+    max-width: 100%;
+    max-height: 100%;
 }

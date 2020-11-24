@@ -92,7 +92,7 @@ function generateShops() {
     <div class="details">
         <div>Cost: <span></span></div>
         <div>Total: <span></span></div>
-        <div></div>
+        <div class="disc"></div>
     </div>
 `;
     const containerDiv = document.createElement("div");
