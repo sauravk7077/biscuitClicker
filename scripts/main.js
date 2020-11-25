@@ -25,6 +25,7 @@ async function init() {
         props = data;
         dataStorage.set(props);
     }
+    biscuitBtn.firstElementChild.setAttribute('draggable', false);
     generateShops();
     setInterval(()=> {
         for(let x of props.biscuitValues) {
@@ -35,8 +36,18 @@ async function init() {
 }
 
 
-function biscuitClick() {
+function biscuitClick(e) {
     props.biscuitCount += props.clickValue;
+    const point = document.createElement('div');
+    point.innerText = "+" + props.clickValue;
+    point.className = "point";
+    point.style.top = (e.clientY - biscuitBtn.offsetTop) + "px";
+    point.style.left = (e.clientX - biscuitBtn.offsetLeft) + "px";
+    console.log(e);
+    biscuitBtn.append(point);
+    setTimeout(()=> {
+        point.remove();
+    },1000);
     display();
 }
 
