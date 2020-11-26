@@ -5,27 +5,28 @@ let props;
 // All required DOM elements
 const biscuitBtn = document.getElementById('biscuit');
 const biscuitCountDiv = document.getElementById('biscuitCount');
+const settingInput = document.getElementById('settingInput');
+const inputSubmitBtn = document.getElementById('InputSubmitBtn');
+const settingOutput = document.getElementById('settingOutput');
+const outputSubmitBtn = document.getElementById('OutputSubmitBtn');
+const resetBtn = document.getElementById('resetBtn');
+const hideShowBtn = document.getElementById('hideShowSettingBtn');
 
 //Event Listeners
 biscuitBtn?.addEventListener('click', biscuitClick);
-
+inputSubmitBtn.addEventListener('click', handleImport);
+outputSubmitBtn.addEventListener('click', handleExport);
+resetBtn.addEventListener('click', reset);
+hideShowBtn.addEventListener('click', handleHideShowSettingBtn);
 
 //Functions
 async function init() {
     if(dataStorage.get()){
         props = dataStorage.get();
     }else {
-        const d = await fetch('../data/settings.json', {
-            headers: {
-                'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
-              },
-        });
-        const data = await d.json();
-        props = data;
-        dataStorage.set(props);
+        reset();
     }
-    biscuitBtn.firstElementChild.setAttribute('draggable', false);
+    //biscuitBtn.firstElementChild.setAttribute('draggable', false);
     generateShops();
     setInterval(()=> {
         for(let x of props.biscuitValues) {
@@ -35,6 +36,27 @@ async function init() {
     },1000);
 }
 
+async function reset() {
+    const d = await fetch('../data/settings.json', {
+        headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+    });
+    settingInput.value = "";
+    settingOutput.value = "";
+    const data = await d.json();
+    props = data;
+    dataStorage.set(props);
+}
+
+function handleHideShowSettingBtn(e) {
+    const el = document.getElementById('settingsBox');
+    if(el.className.endsWith(' hidden'))
+        el.className = el.className.replace(' hidden', '');
+    else
+        el.className += " hidden";
+}
 
 function biscuitClick(e) {
     props.biscuitCount += props.clickValue;
@@ -43,7 +65,6 @@ function biscuitClick(e) {
     point.className = "point";
     point.style.top = (e.clientY - biscuitBtn.offsetTop) + "px";
     point.style.left = (e.clientX - biscuitBtn.offsetLeft) + "px";
-    console.log(e);
     biscuitBtn.append(point);
     setTimeout(()=> {
         point.remove();
@@ -94,6 +115,16 @@ function handleShopClick(e, id) {
     display();
 }
 
+function handleImport(e) {
+    saveData(settingInput.value);
+}
+
+function handleExport(e) {
+    settingOutput.value = exportData();
+    settingOutput.focus();
+    settingOutput.setSelectionRange(0, settingOutput.value.length);
+}
+
 function generateShops() {
     const htmlCode = `
     <div class="shopBtn">
@@ -122,8 +153,24 @@ function generateShops() {
         shopBtn.children[1].children[1].children[0].innerText = x.count;
         containerDiv.appendChild(shopBtn);
     }
-    document.body.append(containerDiv);
+    document.body.firstElementChild.append(containerDiv);
 
+}
+
+function saveData(data) {
+    try {
+        const ob = JSON.parse(atob(data));
+        props = ob;
+        dataStorage.set(props);
+    } catch (error) {
+        alert("Enter valid data!");
+    }
+    
+    display();
+}
+
+function exportData() {
+    return btoa(JSON.stringify(props));
 }
 
 

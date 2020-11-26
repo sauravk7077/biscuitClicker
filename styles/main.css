@@ -3,7 +3,10 @@ body{
     --color1: #F1A46C;
     --color2: #6DE7F2;
     --color3: #d0f7fb;
-    background-color: aliceblue;
+    --color4: #f6c5a2;
+    --bg1: #fae2d1;
+    --bg2: #f0f8ff;
+    background-color: var(--bg2);
     color: #000000d3;
 }
 
@@ -135,11 +138,72 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
+    filter: drop-shadow(0 0 2px white);
 }
 img{
     max-width: 100%;
     max-height: 100%;
 }
+
+/* Settings */
+
+.modal{
+    top: 25px;
+    right: 25px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    z-index: 9;
+}
+
+
+.settingsBox{
+    margin: 5px;
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid var(--color2);
+    transition: all 0.4s ease-in-out;
+    background-color: var(--color3);
+    
+}
+
+.setting{
+    margin: 5px auto;
+}
+.setting *{
+    margin: 4px auto;
+}
+
+#hideShowSettingBtn{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+/* Buttons, Inputs */
+
+button{
+    border: 1px solid var(--color4);
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--color1);
+}
+
+input[type="text"] {
+    padding: 2px;
+    border-radius: 5px;
+    border: 2px solid var(--color2);
+}
+
 
 @keyframes appearAndHide{
     0%{
@@ -147,11 +211,11 @@ img{
         opacity: 0;
     }
     20%{
-        transform: scale(1);
+        transform: scale(1) translateY(-30px);
         opacity: 1;
     }
     100%{
-        transform: scale(0);
+        transform: scale(0) translateY(-30px);
         opacity: 0;
     }
 }
