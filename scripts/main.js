@@ -13,7 +13,7 @@ async function init() {
   if (dataStorage.get()) {
     props = dataStorage.get();
   } else {
-    const d = await fetch('/data/settings.json', {
+    const d = await fetch('./data/settings.json', {
       headers: {
         'Content-Type': 'application/json' // 'Content-Type': 'application/x-www-form-urlencoded',
 
