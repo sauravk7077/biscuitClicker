@@ -13,7 +13,7 @@ async function init() {
   if (dataStorage.get()) {
     props = dataStorage.get();
   } else {
-    const d = await fetch('/data/settings.json', {
+    const d = await fetch('./data/settings.json', {
       headers: {
         'Content-Type': 'application/json' // 'Content-Type': 'application/x-www-form-urlencoded',
 
@@ -97,7 +97,7 @@ function generateShops() {
     shopBtn.className = "shopContent";
     shopBtn.id = formatName(x.name);
     shopBtn.innerHTML = htmlCode;
-    shopBtn.children[0].children[0].children[0].src = `/images/${i}.svg`;
+    shopBtn.children[0].children[0].children[0].src = `./images/${i}.svg`;
     shopBtn.children[0].children[1].innerText = x.name;
     shopBtn.children[0].addEventListener('click', e => {
       handleShopClick(e, shopBtn.id);
