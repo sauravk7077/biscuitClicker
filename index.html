@@ -1,28 +1,46 @@
+
+<!-- You are trying to look at the source code, biscuit you receive from cheating will give you stomach aches -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="./styles/main.css">
     <title>Document</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <script src="scripts/storage.js" defer></script>
-    <script src="scripts/main.js" defer></script>
+    <script src="./scripts/storage.js" defer></script>
+    <script src="./scripts/main.js" defer></script>
 </head>
 <body>
     <div class="top">
         <h1>Biscuit Clicker</h1>
         <div id="biscuit">
-            <img src="images/biscuit.svg"/>
+            <img src="./images/biscuit.svg" draggable="false"/>
         </div>
         
         <div class="biscuitCountBox">
             <div id="biscuitCount">0</div>&nbsp;
-            <img src="images/biscuit.svg"/>
+            <img src="./images/biscuit.svg"/>
         </div>
-    </div>
-    
+        <button id="hideShowSettingBtn"><i class="fas fa-cog"></i></button>
+        <div class="modal">
+            <div class="settingsBox hidden" id="settingsBox">
+                    <div class="setting">
+                        <div>Import</div>
+                        <input type="text" id="settingInput"/>
+                        <button id="InputSubmitBtn">Submit</button>
+                    </div>
+                    <div class="setting">
+                        <div>Export</div>
+                        <input type="text" id="settingOutput"/>
+                        <button id="OutputSubmitBtn">Export</button>
+                    </div>
+                    <button id="resetBtn">Reset</button>
+                </div>
+            </div>
+        </div>
+        
+        <small id="attribution"><a href="https://github.com/sauravk7077/biscuitClicker/blob/master/README.md">Attributions</a></small>
 </body>
 </html>

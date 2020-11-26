@@ -3,7 +3,10 @@ body{
     --color1: #F1A46C;
     --color2: #6DE7F2;
     --color3: #d0f7fb;
-    background-color: aliceblue;
+    --color4: #f6c5a2;
+    --bg1: #fae2d1;
+    --bg2: #f0f8ff;
+    background-color: var(--bg2);
     color: #000000d3;
 }
 
@@ -22,16 +25,27 @@ h1{
 
 
 #biscuit {
+    position: relative;
     display: block;
     width: 200px;
     height: 200px;
     cursor: pointer;
     transition: transform 0.2s ease-in-out;
     filter: drop-shadow(0px 0px 6px white);
+    user-select: none;
 }
 
 #biscuit:active, .shopBtn:active{
     transform: scale(0.8);
+}
+
+.point{
+    font-size: 2em;
+    color: #fff;
+    position: absolute;
+    animation: appearAndHide 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    user-select: none;
 }
 
 #shopsContainer{
@@ -124,8 +138,102 @@ h1{
     display: flex;
     align-items: center;
     justify-content: center;
+    filter: drop-shadow(0 0 2px white);
 }
 img{
     max-width: 100%;
     max-height: 100%;
+}
+
+/* Settings */
+
+.modal{
+    top: 25px;
+    right: 25px;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    z-index: 9;
+}
+
+
+.settingsBox{
+    margin: 5px;
+    border-radius: 20px;
+    padding: 10px;
+    border: 2px solid var(--color2);
+    transition: all 0.4s ease-in-out;
+    background-color: var(--color3);
+    
+}
+
+.setting{
+    margin: 5px auto;
+}
+.setting *{
+    margin: 4px auto;
+}
+
+#hideShowSettingBtn{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+/* Buttons, Inputs */
+
+button{
+    border: 1px solid var(--color4);
+    outline: none;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #fff;
+    background-color: var(--color1);
+}
+
+button:hover{
+    filter: brightness(0.9);
+}
+
+input[type="text"] {
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid var(--color2);
+}
+
+input:focus{
+    box-shadow: inset 0 0 2px var(--color2);
+}
+
+#attribution{
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    text-decoration: none;
+    font-size: 0.6em;
+}
+#attribution a{
+    text-decoration: none;
+}
+
+@keyframes appearAndHide{
+    0%{
+        transform: scale(0);
+        opacity: 0;
+    }
+    20%{
+        transform: scale(1) translateY(-30px);
+        opacity: 1;
+    }
+    100%{
+        transform: scale(0) translateY(-30px);
+        opacity: 0;
+    }
 }
