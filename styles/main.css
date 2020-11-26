@@ -198,12 +198,30 @@ button{
     background-color: var(--color1);
 }
 
+button:hover{
+    filter: brightness(0.9);
+}
+
 input[type="text"] {
     padding: 2px;
     border-radius: 5px;
-    border: 2px solid var(--color2);
+    border: 1px solid var(--color2);
 }
 
+input:focus{
+    box-shadow: inset 0 0 2px var(--color2);
+}
+
+#attribution{
+    position: fixed;
+    right: 5px;
+    bottom: 5px;
+    text-decoration: none;
+    font-size: 0.6em;
+}
+#attribution a{
+    text-decoration: none;
+}
 
 @keyframes appearAndHide{
     0%{
