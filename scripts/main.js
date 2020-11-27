@@ -1,4 +1,4 @@
-function() {
+()=> {
 
     // Required constants and variable
     const dataStorage = new DataStorage("props");
