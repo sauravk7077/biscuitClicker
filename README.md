@@ -1,6 +1,6 @@
 # Biscuit Clicker clone of cookie clicker
 
-Clone based on [classic cookie clicker](https://orteil.dashnet.org/experiments/cookie/).
+Clone of the [classic cookie clicker](https://orteil.dashnet.org/experiments/cookie/).
 
 ### Attributions
 <a href='https://www.freepik.com/vectors/education'>Education vector created by nizovatina - www.freepik.com</a>
