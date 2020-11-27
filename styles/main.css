@@ -233,7 +233,7 @@ input:focus{
         opacity: 1;
     }
     100%{
-        transform: scale(0) translateY(-30px);
+        transform: scale(0) translateY(-60px);
         opacity: 0;
     }
 }
