@@ -26,7 +26,7 @@ function main() {
         if(dataStorage.get()){
             props = dataStorage.get();
         }else {
-            reset();
+            await reset();
         }
         //biscuitBtn.firstElementChild.setAttribute('draggable', false);
         generateShops();
