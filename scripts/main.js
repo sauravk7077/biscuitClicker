@@ -109,7 +109,7 @@ function main() {
 
     }
     function handleShopClick(e, id) {
-        const currentEl = props.biscuitValues.filter(el=> el.name === id)[0];
+        const currentEl = props.biscuitValues.filter(el=> formatName(el.name) === id)[0];
         if(props.biscuitCount >= currentEl.cost){
             currentEl.count++;
             props.biscuitCount -= currentEl.cost;
