@@ -1,4 +1,4 @@
-function(){// Required constants and variable
+function main(){// Required constants and variable
     const dataStorage = new DataStorage("props");
     let props;
 
@@ -24,7 +24,7 @@ function(){// Required constants and variable
         if(dataStorage.get()){
             props = dataStorage.get();
         }else {
-            reset();
+            await reset();
         }
         //biscuitBtn.firstElementChild.setAttribute('draggable', false);
         generateShops();
@@ -107,7 +107,7 @@ function(){// Required constants and variable
 
     }
     function handleShopClick(e, id) {
-        const currentEl = props.biscuitValues.filter(el=> el.name === id)[0];
+        const currentEl = props.biscuitValues.filter(el=> formatName(el.name) === id)[0];
         if(props.biscuitCount >= currentEl.cost){
             currentEl.count++;
             props.biscuitCount -= currentEl.cost;
@@ -175,4 +175,6 @@ function(){// Required constants and variable
 
 
     init();
-}();
+};
+
+main();
