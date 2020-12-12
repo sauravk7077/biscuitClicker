@@ -15,7 +15,7 @@ function main() {
     const hideShowBtn = document.getElementById('hideShowSettingBtn');
 
     //Event Listeners
-    biscuitBtn?.addEventListener('click', biscuitClick);
+    biscuitBtn.addEventListener('click', biscuitClick);
     inputSubmitBtn.addEventListener('click', handleImport);
     outputSubmitBtn.addEventListener('click', handleExport);
     resetBtn.addEventListener('click', reset);
